@@ -1,10 +1,8 @@
 package com.pruebatecnica.clientepersonaservice.Service;
 
 import com.pruebatecnica.clientepersonaservice.Entity.Cliente;
-import com.pruebatecnica.clientepersonaservice.Entity.Persona;
-import com.pruebatecnica.clientepersonaservice.Exception.ClienteNotFoundException;
+import com.pruebatecnica.clientepersonaservice.Exceptions.ClienteNotFoundException;
 import com.pruebatecnica.clientepersonaservice.Repository.ClienteRepository;
-import org.aspectj.lang.annotation.AdviceName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

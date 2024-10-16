@@ -2,7 +2,7 @@ package com.pruebatecnica.cuentamovimientoservice.Controller;
 
 
 import com.pruebatecnica.cuentamovimientoservice.Entity.Cuenta;
-import com.pruebatecnica.cuentamovimientoservice.Exceptions.ClienteNotFoundException;
+import com.pruebatecnica.cuentamovimientoservice.Exceptions.CuentaNotFoundException;
 import com.pruebatecnica.cuentamovimientoservice.Repository.CuentaRepository;
 import com.pruebatecnica.cuentamovimientoservice.Service.MessageProducer;
 import org.springframework.web.bind.annotation.*;
@@ -38,13 +38,14 @@ public class CuentaController {
 
     @GetMapping("/{id}")
     public Cuenta getCuentaById(@PathVariable Long id){
-        return  cuentaRepository.findById(id).orElseThrow(()->new ClienteNotFoundException("Cuenta no encontrada"));
+        return  cuentaRepository.findById(id)
+                .orElseThrow(()->new CuentaNotFoundException("Cuenta no encontrado con ID:"+id));
     }
 
     @DeleteMapping("/{id}")
     public void deleteCuenta(@PathVariable Long id){
         if(!cuentaRepository.existsById(id)){
-            throw  new ClienteNotFoundException("Cliente no encontrdo con ID:"+id);
+            throw  new CuentaNotFoundException("Cuenta no encontrdo con ID:"+id);
         }
           cuentaRepository.deleteById(id);
     }
